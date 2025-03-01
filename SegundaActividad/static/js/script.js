@@ -14,6 +14,8 @@ let snake = [
 let direction = { x: gridSize, y: 0 };
 let food = { x: 0, y: 0 };
 let score = 0;  // Variable para el puntaje
+let gameInterval; // Variable para el intervalo del juego
+let isPaused = false; // Variable para el estado de pausa
 
 // Genera posición aleatoria para la comida
 function randomFood() {
@@ -70,37 +72,59 @@ function updateSnake() {
 
 // Función de fin de juego
 function gameOver() {
-  alert("¡Game Over!");
+  clearInterval(gameInterval);
   document.location.reload();
 }
 
 // Control de teclas para mover la serpiente
-document.addEventListener("keydown", function(event) {
-  switch(event.key) {
+document.addEventListener("keydown", function (event) {
+  switch (event.key) {
     case "ArrowUp":
+    case "w":
       if (direction.y === 0) direction = { x: 0, y: -gridSize };
+      event.preventDefault();
       break;
     case "ArrowDown":
+    case "s":
       if (direction.y === 0) direction = { x: 0, y: gridSize };
+      event.preventDefault();
       break;
     case "ArrowLeft":
+    case "a":
       if (direction.x === 0) direction = { x: -gridSize, y: 0 };
+      event.preventDefault();
       break;
     case "ArrowRight":
+    case "d":
       if (direction.x === 0) direction = { x: gridSize, y: 0 };
+      event.preventDefault();
       break;
   }
 });
 
 // Bucle principal del juego
 function gameLoop() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawFood();
-  updateSnake();
-  drawSnake();
+  if (!isPaused) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFood();
+    updateSnake();
+    drawSnake();
+  }
 }
 
-// Inicializa la comida y el score, luego inicia el bucle
+// Inicializa la comida y el score
 randomFood();
 updateScore();
-setInterval(gameLoop, 100);
+
+// Maneja el botón de inicio
+document.getElementById("startBtn").addEventListener("click", function () {
+  if (!gameInterval) {
+    gameInterval = setInterval(gameLoop, 100);
+  }
+});
+
+// Maneja el botón de pausa
+document.getElementById("pauseBtn").addEventListener("click", function () {
+  isPaused = !isPaused;
+  this.innerText = isPaused ? "Reanudar" : "Pausar";
+});
