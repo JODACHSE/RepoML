@@ -4,27 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flask - M.Learning</title>
-    <!-- Bootswatch-->
+    <!-- Bootswatch -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css"
       integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN"
       crossorigin="anonymous"
     />
+    <!-- Favicon (opcional) -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <!-- Enlace a tu hoja de estilos -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   </head>
-
   <body>
     <header>
       <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-
-          <img 
-              src="{{ url_for('static', filename='assets/imagotipo.png') }}" 
-              alt="Logo Navbar" 
-              style="height: 40px; margin-right: 10px;"
-            >
-
+          <!-- Logo en la navbar -->
+          <img
+            src="{{ url_for('static', filename='assets/imagotipo.png') }}"
+            alt="Logo Navbar"
+            style="height: 40px; margin-right: 10px;"
+          >
           <a class="navbar-brand" href="#">Machine Learning</a>
           <button
             class="navbar-toggler"
@@ -41,7 +42,6 @@
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a class="nav-link active" href="#">Juego</a>
-                </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Historia</a>
@@ -49,33 +49,41 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Creado por</a>
               </li>
+            </ul>
+            <!-- Si deseas un formulario de búsqueda, agrégalo aquí
+            <form class="d-flex">
+              <input class="form-control me-sm-2" type="search" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
+            -->
           </div>
         </div>
       </nav>
     </header>
 
     <main class="container my-5 text-center">
-
+      <!-- Logo del juego -->
       <img 
-      src="{{ url_for('static', filename='assets/logosnake.png') }}" 
-      alt="Logo Snake" 
-      class="game-logo">
+        src="{{ url_for('static', filename='assets/logosnake.png') }}" 
+        alt="Logo Snake" 
+        class="game-logo"
+      >
 
-      <!-- Score y botón de Pausa -->
-      <div id="scoreboard" class="mb-2" style="font-size: 20px;">
+      <!-- Score -->
+      <div id="scoreboard" class="mb-2">
         Score: <span id="scoreValue">0</span>
       </div>
+
+      <!-- Botón de Pausa -->
       <button id="pauseBtn" class="btn btn-primary mb-3">Pausar</button>
-      
+
       <!-- Contenedor del juego -->
       <div class="game-container">
-
-        <!-- Imagen de logo en lugar de h2 (ancho igual al canvas) -->
         <canvas id="gameCanvas" width="400" height="400" class="border"></canvas>
+        
         <!-- Overlay para Game Over -->
         <div id="gameOverOverlay">
-          <h2>Game Over</h2>
+          <h2>¡Game Over!</h2>
           <button id="restartBtn" class="btn btn-success mt-2" onclick="restartGame()">Reiniciar</button>
         </div>
       </div>
@@ -97,6 +105,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Script del juego -->
+    <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
   </body>
 </html>
