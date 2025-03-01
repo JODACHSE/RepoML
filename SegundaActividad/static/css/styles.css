@@ -1,0 +1,46 @@
+/* Contenedor del juego centrado */
+
+
+.game-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+/* El canvas se centra dentro del contenedor */
+#gameCanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Overlay de Game Over: oculto por defecto */
+#gameOverOverlay {
+  display: none; /* Asegúrate de que esté oculto al cargar la página */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* Utilizaremos display: flex solo cuando se muestre */
+}
+
+/* El logo se ajusta al ancho del canvas */
+.game-logo {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+/* Score */
+#scoreboard {
+  font-size: 20px;
+}
