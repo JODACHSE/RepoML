@@ -16,6 +16,9 @@ def index():
 def home():
     return render_template("html/home.html")
 
+@app.route("/snake_game")
+def snake_game():
+    return render_template("html/snake_game.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
