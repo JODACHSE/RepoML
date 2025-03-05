@@ -27,18 +27,13 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('home') }}">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('snake_game') }}">Juego Snake</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('history_flask') }}">Historia</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="{{ url_for('installation_flask') }}">Instalación flask</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('snake_game') }}">Juego Snake</a>
               </li>
             </ul>
           </div>

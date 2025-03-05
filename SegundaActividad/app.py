@@ -24,5 +24,9 @@ def snake_game():
 def history_flask():
     return render_template("html/history_flask.html")
 
+@app.route("/installation_flask")
+def installation_flask():
+    return render_template("html/installation_flask.html")
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

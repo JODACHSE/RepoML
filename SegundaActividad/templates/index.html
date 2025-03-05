@@ -2,12 +2,31 @@
 
 {% block title %}Index{% endblock %}
 
-{% block header %}
-  <h1>Index flask</h1>
+{% block head_adds %}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
 {% endblock %}
 
 {% block content %}
-  <p>
-    Index flask
-  </p>
+  <div class="alert alert-dismissible alert-secondary">
+    <h2>¿Qué es Flask?</h2>
+    <p>Flask es un microframework web para Python. Es minimalista y flexible, permitiendo a los desarrolladores construir aplicaciones web rápidamente. Flask utiliza <strong>Werkzeug</strong> para manejar solicitudes HTTP y <strong>Jinja2</strong> para renderizar plantillas.</p>
+  </div>
+
+  <div class="alert alert-dismissible alert-success">
+    <h2>Aplicaciones creadas con Flask</h2>
+    <p>Flask es utilizado por empresas reconocidas como:</p>
+    <ul class="text-left">
+      <li><strong>Netflix:</strong> Para la automatización interna.</li>
+      <li><strong>Reddit:</strong> Herramientas de moderación y microservicios.</li>
+      <li><strong>LinkedIn:</strong> Algunas funcionalidades específicas.</li>
+    </ul>
+  </div>
+
+  <div class="alert alert-dismissible alert-info">
+    <h2>Recursos sobre Flask</h2>
+    <ul class="text-left">
+      <li><a href="https://flask.palletsprojects.com/" class="alert-link" target="_blank">Documentación oficial de Flask</a></li>
+      <li><a href="https://jinja.palletsprojects.com/" class="alert-link" target="_blank">Documentación de Jinja2</a></li>
+      <li><a href="https://github.com/pallets/flask" class="alert-link"  target="_blank">Repositorio en GitHub</a></li>
+  </div>
 {% endblock %}
