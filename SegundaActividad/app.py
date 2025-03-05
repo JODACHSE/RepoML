@@ -20,5 +20,9 @@ def home():
 def snake_game():
     return render_template("html/snake_game.html")
 
+@app.route("/history_flask")
+def history_flask():
+    return render_template("html/history_flask.html")
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
