@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootswatch-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css"
+      integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous" }>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../../css/styles.css') }}">
+
+    {% block head_adds %}{% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          {% block logo_img %}{% endblock %}
+          <a class="navbar-brand" href="{{ url_for('index') }}">Machine Learning</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('history_flask') }}">Historia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('installation_flask') }}">Instalación flask</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('snake_game') }}">Juego Snake</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-5 text-center">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      {% block footer %}{% endblock %}
+    </footer>
+
+    {% block final_scripts %}{% endblock %}
+  </body>
+</html>

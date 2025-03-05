@@ -1,0 +1,82 @@
+{% extends 'html/templates/base.html' %}
+
+{% block title %}Historia de flask{% endblock %}
+
+{% block head_adds %}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+
+<header class="text-center bg-primary text-white p-4">
+    <h1>Historia de Flask</h1>
+</header>
+
+<div class="container mt-5">
+    <div class="card shadow p-4 text-center">
+        <img src="{{ url_for('static', filename='/flask.png') }}" alt="Logo de Flask"
+            class="img-fluid mx-auto d-block mb-3" style="max-width: 80px;">
+        <h2>Historia y Características de Flask</h2>
+    </div>
+
+    <div class="card shadow p-4 mt-3">
+        <h2>Historia</h2>
+        <img src="{{ url_for('static', filename='/flask2.jpg') }}" alt="Imagen sobre Flask"
+            class="img-fluid mx-auto d-block mb-3" style="max-width: 300px;">
+        <p class="mx-auto">Flask es un microframework para Python que fue desarrollado por <strong>Armin
+                Ronacher</strong> en 2010.
+            Surgió como un experimento dentro de un proyecto llamado "Werkzeug and Jinja" y se convirtió en
+            uno de los frameworks más populares para el desarrollo web con Python.</p>
+    </div>
+
+    <div class="card shadow p-4 mt-3">
+        <h2>Características Principales</h2>
+        <ul class="table-warning mx-auto">
+            <li class="text-left"><strong>Microframework:</strong> No incluye componentes innecesarios, dejando la
+                elección de bibliotecas al desarrollador.</li>
+            <li class="text-left"><strong>Ligero y Flexible:</strong> Permite desarrollar aplicaciones con mínima
+                configuración.</li>
+            <li class="text-left"><strong>Extensibilidad:</strong> Facilita la integración de extensiones para añadir
+                funcionalidades.</li>
+            <li class="text-left"><strong>Basado en Werkzeug y Jinja2:</strong> Usa Werkzeug como servidor WSGI y Jinja2
+                como motor de plantillas.</li>
+            <li class="text-left"><strong>Enrutamiento simple:</strong> Define rutas de forma sencilla con decoradores.
+            </li>
+            <li class="text-left"><strong>Soporte para JSON:</strong> Integración fácil con APIs RESTful.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow p-4 mt-3">
+        <h2 class="text-center">Casos de Uso</h2>
+    
+        <div class="container text-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-5 px-4">
+                    <div class="table-info text-center mx-auto">
+                        <p class="text-left">Flask es ideal para:</p>
+                        <ul class="text-left">
+                            <li>APIs y microservicios.</li>
+                            <li>Proyectos pequeños y medianos.</li>
+                            <li>Prototipos rápidos.</li>
+                            <li>Aplicaciones que requieren alta personalización.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex justify-content-center">
+                    <img src="{{ url_for('static', filename='/microservicios.jpeg') }}" alt="microservicios" class="img-fluid px-5 mb-3" style="max-width: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="card shadow p-4 mt-3">
+        <h2>Conclusión</h2>
+        <p class="mx-auto">Flask es una excelente opción para aquellos que buscan un framework ligero, flexible y fácil
+            de usar
+            para el desarrollo de aplicaciones web con Python. Su capacidad de expansión y su enfoque minimalista lo
+            hacen
+            una herramienta poderosa en el ecosistema de desarrollo web.</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -6,12 +6,27 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
+@app.route("/index")
 @app.route("/")
 def index():
     """retornamos la pagina web"""
     return render_template("index.html")
 
+@app.route("/home")
+def home():
+    return render_template("html/home.html")
+
+@app.route("/snake_game")
+def snake_game():
+    return render_template("html/snake_game.html")
+
+@app.route("/history_flask")
+def history_flask():
+    return render_template("html/history_flask.html")
+
+@app.route("/installation_flask")
+def installation_flask():
+    return render_template("html/installation_flask.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

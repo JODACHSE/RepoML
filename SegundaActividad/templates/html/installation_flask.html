@@ -1,0 +1,71 @@
+{% extends 'html/templates/base.html' %}
+
+{% block title %}Instalación flask{% endblock %}
+
+{% block head_adds %}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+   <div class="container mt-5">
+      <h1 class="text-center">Instalación Flask</h1>
+
+      <div class="card mt-4">
+         <div class="card-body">
+            <p class="card-text">Idealmente lo mejor es crear un entorno virtual de python asi:</p>
+            <ul class="text-left">
+               <li>mkdir myproject</li>
+               <li>cd myproject</li>
+               <li>python -3 -m venv .venv</li>
+               <li>.venv\Scripts\activate</li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="card mt-4">
+         <div class="card-body">
+            <p class="card-text">Una vez activado instale flask:</p>
+            <ul class="text-left">
+               <li>python -m pip install flask</li>
+            </ul>
+
+            <p class="card-text">Para validar que quedo instalada ejecutar:</p>
+            <ul class="text-left">
+               <li>python -m flask --version</li>
+            </ul>
+
+            <p class="card-text">Para levantar el servidor con flask:</p>
+            <ul class="text-left">
+               <li>python -m flask run</li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="card mt-4">
+         <div class="card-body">
+            <p class="card-text">Flask instala automáticamente algunas dependencias como</p>
+            <ul class="text-left">
+               <li>Werkzeug implementa WSGI, la interfaz estándar de Python entre aplicaciones y servidores.</li>
+               <li>Jinja es un lenguaje de plantilla que representa las páginas que atiende su aplicación.</li>
+               <li>MarkupSafe viene con Jinja. Escapa de la entrada no confiable al representar plantillas para evitar ataques de inyección.</li>
+               <li>Itsdangerous firma datos de forma segura para garantizar su integridad. Esto se usa para proteger la cookie de sesión de Flask.</li>
+               <li>Click es un marco para escribir aplicaciones de línea de comandos. Proporciona el comando Flask y permite agregar comandos de administración personalizados.</li>
+               <li>Blinker proporciona soporte para señales.</li>
+             </ul>
+         </div>
+      </div>
+
+      <div class="card mt-4">
+         <div class="card-body">
+            <h3 class="card-title align-start">Curiosidades</h3>
+            <ul class="text-left">
+               <li>El nombre "Flask" es una referencia al framework anterior llamado Bottle.</li>
+               <li>Flask es conocido por su enfoque minimalista, pero es altamente extensible gracias a su comunidad
+                  activa.</li>
+               <li>Es ideal para proyectos pequeños y prototipos, pero también puede manejar aplicaciones complejas con
+                  extensiones.</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+{% endblock %}
