@@ -1,0 +1,48 @@
+body {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.game-container {
+  position: relative;
+  width: 400px;  /* Coincide con canvas.width */
+  height: 400px; /* Coincide con canvas.height */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+/* Centra el canvas dentro del contenedor */
+#gameCanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Overlay para Game Over (oculto por defecto) */
+#gameOverOverlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* Se mostrará con display: flex cuando ocurra Game Over */
+}
+
+/* Logo Snake */
+.game-logo {
+  width: 400px; /* Ajusta si deseas otro tamaño */
+  margin-bottom: 20px;
+}
+
+/* Score */
+#scoreboard {
+  font-size: 20px;
+}
