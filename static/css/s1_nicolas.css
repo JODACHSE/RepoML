@@ -1,0 +1,39 @@
+/* s1_nicolas.css */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    /* No forzamos el body a display:flex ni a 100vh para no romper el navbar */
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    font-family: 'Arial', sans-serif;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    /* Ajusta a tu gusto. Deja espacio para el navbar arriba */
+    text-align: center;
+}
+
+#hello {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 1s ease-in-out;
+    cursor: pointer;
+}
+
+/* Animación de entrada */
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

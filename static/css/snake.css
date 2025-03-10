@@ -1,12 +1,9 @@
-body {
-  background-color: #fff !important;
-  color: #000 !important;
-}
-
 .game-container {
   position: relative;
-  width: 400px;  /* Coincide con canvas.width */
-  height: 400px; /* Coincide con canvas.height */
+  width: 400px;
+  /* Coincide con canvas.width */
+  height: 400px;
+  /* Coincide con canvas.height */
   margin: 0 auto;
   border: 1px solid #ccc;
 }
@@ -38,7 +35,8 @@ body {
 
 /* Logo Snake */
 .game-logo {
-  width: 400px; /* Ajusta si deseas otro tamaño */
+  width: 400px;
+  /* Ajusta si deseas otro tamaño */
   margin-bottom: 20px;
 }
 
