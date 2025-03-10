@@ -1,0 +1,30 @@
+{% extends "html/templates/base.html" %}
+
+{% block title %}QUIZ APP{% endblock %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/s1_andres.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app">
+  <h1>Simple quiz</h1>
+  <h3>Machine learning - profundizacion II - Andres Rodriguez</h3>
+  <div class="quiz">
+    <h2 id="question">Question goes here</h2>
+    <div id="answer-buttons">
+      <button class="btn">Answer 1</button>
+      <button class="btn">Answer 2</button>
+      <button class="btn">Answer 3</button>
+      <button class="btn">Answer 4</button>
+    </div>
+    <button id="next-btn">Next</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block final_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/s1_andres.js') }}"></script>
+{% endblock %}

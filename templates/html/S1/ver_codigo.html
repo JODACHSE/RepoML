@@ -1,0 +1,26 @@
+{% extends "html/templates/base.html" %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block title %}Ver Códigos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Contenido de los Archivos Python</h1>
+
+    <h2>hola_mundo.py</h2>
+    <pre><code>{{ hola | e }}</code></pre>
+
+    <h2>adios_mundo.py</h2>
+    <pre><code>{{ adios | e }}</code></pre>
+</div>
+<hr>
+<di class="container">
+    <h1>Contenido del Archico README</h1>
+
+    <h2>README.md</h2>
+    <pre><code>{{ readme | e }}</code></pre>
+</di>
+{% endblock %}

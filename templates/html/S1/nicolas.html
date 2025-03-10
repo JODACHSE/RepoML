@@ -1,0 +1,19 @@
+{% extends "html/templates/base.html" %}
+
+{% block title %}Hola Mundo App{% endblock %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/s1_nicolas.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app">
+    <h1 id="hello">Hola Mundo</h1>
+</div>
+{% endblock %}
+
+{% block final_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/s1_nicolas.js') }}"></script>
+{% endblock %}
