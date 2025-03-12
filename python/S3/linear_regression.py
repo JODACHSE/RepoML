@@ -1,6 +1,8 @@
 """ Machine learning - Linear Regression"""
 import io
 import base64
+import matplotlib
+matplotlib.use('Agg') # Para evitar que pylot se vaya en hilos secundarios
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.linear_model import LinearRegression
