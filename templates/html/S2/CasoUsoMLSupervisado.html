@@ -1,0 +1,88 @@
+{% extends 'html/templates/base.html' %}
+
+{% block title %}Caso de uso ML supervisado{% endblock %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="text-center p-4 mb-4 bg-primary">Caso de Uso: Machine Learning Supervisado</h1>
+
+            <div class="alert alert-info text-center" role="alert">
+                🌟 El Machine Learning supervisado permite entrenar modelos con datos etiquetados para hacer
+                predicciones precisas.
+            </div>
+
+            <div class="card shadow border-3 border-primary bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">📌 ¿Qué es un caso de uso de Machine Learning Supervisado?</h4>
+                    <p class="card-text">
+                        El <b>Machine Learning supervisado</b> es un enfoque donde el modelo aprende a partir de un
+                        conjunto de
+                        datos etiquetados. Esto significa que se le proporciona información de entrada junto con la
+                        salida correcta,
+                        permitiendo que el algoritmo identifique patrones y haga predicciones sobre nuevos datos.
+                    </p>
+                    <p class="card-text">
+                        Este tipo de aprendizaje se utiliza en una amplia variedad de aplicaciones, como el
+                        reconocimiento de voz,
+                        la clasificación de imágenes y la detección de anomalías en datos financieros.
+                    </p>
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='Aprendizaje-supervisado.png') }}"
+                            alt="Machine Learning Supervisado." class="img-fluid rounded shadow">
+                        <a class="text-dark text-decoration-none text-white"
+                            href="https://decidesoluciones.es/tipos-de-aprendizaje-algoritmos-machine-learning/#:~:text=de%20estos%20modelos.-,Aprendizaje%20supervisado,-Se%20puede%20utilizar">Aprendizaje
+                            supervisado</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow border-3 border-success mt-4 bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title text-success">💡 Caso Real: Detección de Fraude en Tarjetas de Crédito</h4>
+                    <p class="card-text">
+                        Un ejemplo práctico del uso de Machine Learning supervisado es la <b>detección de fraude</b> en
+                        transacciones bancarias. Los modelos se entrenan con datos de transacciones pasadas, donde
+                        algunas están etiquetadas como
+                        fraudulentas y otras como legítimas.
+                    </p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='machine-learning-vs-modelo-tradicional.png') }}"
+                            alt="Detección de Fraude" class="img-fluid rounded shadow">
+                        <a class="text-dark text-decoration-none text-white"
+                            href="https://stripe.com/es/resources/more/how-machine-learning-works-for-payment-fraud-detection-and-prevention#como-se-usa-el-emmachine-learningem-para-prevenir-y-detectar-el-fraude">
+                            Modelo tradicional Vs. Machine learning</a>
+                    </div>
+
+                    <p class="card-text mt-3">
+                        Con esta información, el algoritmo puede analizar nuevas transacciones y predecir si son
+                        fraudulentas
+                        con base en patrones detectados. Los bancos y plataformas de pago utilizan estos modelos para
+                        mejorar
+                        la seguridad y reducir pérdidas económicas por fraudes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card shadow border-3 border-warning mt-4 bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title text-warning">🚀 Beneficios del Machine Learning Supervisado</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">✅ <b>Alta precisión</b> en tareas específicas.</li>
+                        <li class="list-group-item">🔍 <b>Mejora la toma de decisiones</b> mediante el análisis de
+                            datos.</li>
+                        <li class="list-group-item">⚡ <b>Automatización</b> de procesos en múltiples industrias.</li>
+                        <li class="list-group-item">💡 <b>Detección temprana</b> de patrones y anomalías.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

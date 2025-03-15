@@ -3,10 +3,12 @@ Aplicación flask para Machine Learning (conceptos)
 """
 from flask import Flask, render_template, request
 from python.S3 import linear_regression
+from python.S4 import linear_regression_weight_and_height
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 # Usar en terminal: flask --app app run --debug
+
 
 @app.route("/")
 def index():
@@ -50,6 +52,12 @@ def history_flask():
     return render_template("html/S2/history_flask.html")
 
 
+@app.route("/caso_uso_ml_supervisado")
+def caso_uso_ml_supervisado():
+    """Ruta para Caso de uso de machine learning"""
+    return render_template("html/S2/CasoUsoMLSupervisado.html")
+
+
 @app.route("/snake_game")
 def snake_game():
     """Ruta para el juego de la serpiente"""
@@ -68,6 +76,26 @@ def linear_regression_grades():
         predicted_result = linear_regression.calculate_grade(hours)
         graph_image = linear_regression.generate_graph(hours)
     return render_template("html/S3/linear_regression_grades.html",
+                           result=predicted_result,
+                           graph=graph_image)
+
+
+@app.route("/linearRegression/weight_height", methods=["GET", "POST"])
+def linear_regression_peso_altura():
+    """
+    Página para predecir el peso basado en la altura usando regresión lineal
+    """
+    predicted_result = None
+    graph_image = linear_regression_weight_and_height.generate_graph()
+
+    if request.method == "POST":
+        try:
+            altura = float(request.form.get("altura"))
+            predicted_result = linear_regression_weight_and_height.model.predict([[altura]])[0]
+        except ValueError:
+            predicted_result = "Entrada no válida"
+
+    return render_template("html/S4/linear_regression_peso_altura.html",
                            result=predicted_result,
                            graph=graph_image)
 
