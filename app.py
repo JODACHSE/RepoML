@@ -1,7 +1,6 @@
 """
 Aplicación flask para Machine Learning (conceptos)
 """
-from pyexpat import model
 from flask import Flask, render_template, request
 from python.S3 import linear_regression
 from python.S4 import linear_regression_weight_and_height
