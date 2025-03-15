@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 # Usar en terminal: flask --app app run --debug
 
+
 @app.route("/")
 def index():
     """retornamos la pagina web"""
@@ -48,6 +49,12 @@ def installation_flask():
 def history_flask():
     """Ruta para la historia de flask"""
     return render_template("html/S2/history_flask.html")
+
+
+@app.route("/caso_uso_ml_supervisado")
+def caso_uso_ml_supervisado():
+    """Ruta para Caso de uso de machine learning"""
+    return render_template("html/S2/CasoUsoMLSupervisado.html")
 
 
 @app.route("/snake_game")
