@@ -74,7 +74,7 @@ def linear_regression_grades():
                            graph=graph_image)
 
 
-@app.route("/linearRegression/peso_y_altura", methods=["GET", "POST"])
+@app.route("/linearRegression/weight_height", methods=["GET", "POST"])
 def linear_regression_peso_altura():
     """
     Página para predecir el peso basado en la altura usando regresión lineal
