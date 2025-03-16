@@ -99,6 +99,9 @@ def linear_regression_peso_altura():
                            result=predicted_result,
                            graph=graph_image)
 
+@app.route("/linear_regression_mind_map")
+def linear_regression_mind_map():
+    return render_template("html/S5/linear_regression_mind_map.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
