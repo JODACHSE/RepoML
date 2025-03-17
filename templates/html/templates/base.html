@@ -33,27 +33,29 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark px-3" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <hr class="dropdown-divider">Semana 5 - Regresion Lineal, Mapa mental
-                  <a href="{{ url_for('linear_regression_mind_map') }}">Regresion Lineal, Mapa mental</a>
+                  <hr class="dropdown-divider">Semana 5 - Regresion Logistica
                 </li>
+                <li><a class="nav-link" href="{{ url_for('linear_logistic_mind_map') }}">Mapa mental sobre Regresiuón
+                    logistica</a></li>
+
                 <li>
-                  <hr class="dropdown-divider">Semana 4 - Regresion Lineal, peso en funcion de la altura
+                  <hr class="dropdown-divider">Semana 4 - Machine learning con regresion lineal
                 </li>
-                <li><a class="nav-link" href="{{ url_for('linear_regression_peso_altura') }}">Regresion lineal</a></li>
+                <li><a class="nav-link" href="{{ url_for('linear_regression_grades') }}">Regresion lineal - Nota en
+                    función tiempo</a></li>
+                <li><a class="nav-link" href="{{ url_for('linear_regression_peso_altura') }}">Regresion lineal - Peso en
+                    función de altura</a></li>
+
                 <li>
-                <li>
-                  <hr class="dropdown-divider">Semana 3 - Machine learning con regresion lineal
-                </li>
-                <li><a class="nav-link" href="{{ url_for('linear_regression_grades') }}">Regresion lineal</a></li>
-                <li>
-                  <hr class="dropdown-divider">Semana 2 - Creación de una pagina web con flask
+                  <hr class="dropdown-divider">Semana 3 - Creación de una pagina web con flask
                 </li>
                 <li><a class="nav-link" href="{{ url_for('history_flask') }}">Historia</a></li>
                 <li><a class="nav-link" href="{{ url_for('installation_flask') }}">Instalación flask</a></li>
                 <li><a class="nav-link" href="{{ url_for('caso_uso_ml_supervisado') }}">Caso de uso supervisado</a></li>
                 <li><a class="nav-link" href="{{ url_for('snake_game') }}">Juego Snake</a></li>
+
                 <li>
-                  <hr class="dropdown-divider">Semana 1 - Creación de un repositorio con ramas
+                  <hr class="dropdown-divider">Semana 2 - Creación de un repositorio con ramas
                 </li>
                 <li><a class="nav-link" href="{{ url_for('andres') }}">Rama Andres</a></li>
                 <li><a class="nav-link" href="{{ url_for('nicolas') }}">Rama Nicolas</a></li>

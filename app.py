@@ -2,7 +2,7 @@
 Aplicación flask para Machine Learning (conceptos)
 """
 from flask import Flask, render_template, request
-from python.S3 import linear_regression
+from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
 
 app = Flask(__name__)
@@ -19,49 +19,49 @@ def index():
 @app.route("/andres")
 def andres():
     """Ruta para la pagina de Andres"""
-    return render_template("html/S1/andres.html")
+    return render_template("html/S2/andres.html")
 
 
 @app.route("/nicolas")
 def nicolas():
     """Ruta para la pagina de Nicolas"""
-    return render_template("html/S1/nicolas.html")
+    return render_template("html/S2/nicolas.html")
 
 
 @app.route("/python")
 def ver_codigo():
     """Ruta para ver el 'hola_mundo.py' y el 'adios_mundo.py' en una pagina web"""
-    with open("python/S1/hola_mundo.py", "r", encoding="utf8") as file:
+    with open("python/S2/hola_mundo.py", "r", encoding="utf8") as file:
         hola = file.read()
-    with open("python/S1/adios_mundo.py", "r", encoding="utf8") as file:
+    with open("python/S2/adios_mundo.py", "r", encoding="utf8") as file:
         adios = file.read()
     with open("README.md", "r", encoding="utf8") as file:
         readme = file.read()
-    return render_template("html/S1/ver_codigo.html", hola=hola, adios=adios, readme=readme)
+    return render_template("html/S2/ver_codigo.html", hola=hola, adios=adios, readme=readme)
 
 
 @app.route("/installation_flask")
 def installation_flask():
     """Ruta proceso de instalacion de Flask"""
-    return render_template("html/S2/installation_flask.html")
+    return render_template("html/S3/installation_flask.html")
 
 
 @app.route("/history_flask")
 def history_flask():
     """Ruta para la historia de flask"""
-    return render_template("html/S2/history_flask.html")
+    return render_template("html/S3/history_flask.html")
 
 
 @app.route("/caso_uso_ml_supervisado")
 def caso_uso_ml_supervisado():
     """Ruta para Caso de uso de machine learning"""
-    return render_template("html/S2/CasoUsoMLSupervisado.html")
+    return render_template("html/S3/CasoUsoMLSupervisado.html")
 
 
 @app.route("/snake_game")
 def snake_game():
     """Ruta para el juego de la serpiente"""
-    return render_template("html/S2/snake_game.html")
+    return render_template("html/S3/snake_game.html")
 
 
 @app.route("/linearRegression", methods=["GET", "POST"])
@@ -75,7 +75,7 @@ def linear_regression_grades():
         hours = float(request.form.get("hours"))
         predicted_result = linear_regression.calculate_grade(hours)
         graph_image = linear_regression.generate_graph(hours)
-    return render_template("html/S3/linear_regression_grades.html",
+    return render_template("html/S4/linear_regression_grades.html",
                            result=predicted_result,
                            graph=graph_image)
 
@@ -91,7 +91,8 @@ def linear_regression_peso_altura():
     if request.method == "POST":
         try:
             altura = float(request.form.get("altura"))
-            predicted_result = linear_regression_weight_and_height.model.predict([[altura]])[0]
+            predicted_result = linear_regression_weight_and_height.model.predict([[altura]])[
+                0]
         except ValueError:
             predicted_result = "Entrada no válida"
 
@@ -99,9 +100,14 @@ def linear_regression_peso_altura():
                            result=predicted_result,
                            graph=graph_image)
 
-@app.route("/linear_regression_mind_map")
-def linear_regression_mind_map():
-    return render_template("html/S5/linear_regression_mind_map.html")
+
+@app.route("/linear_logistic_mind_map")
+def linear_logistic_mind_map():
+    """
+    Página para mostrar mapa mental sobre Regresión logistica
+    """
+    return render_template("html/S5/linear_logistic_mind_map.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
