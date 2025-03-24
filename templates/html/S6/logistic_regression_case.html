@@ -1,0 +1,60 @@
+{% extends "html/templates/base.html" %}
+
+{% block title %}Regresión Logistica: Transporte de paquetes{% endblock %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+
+<header class="text-center bg-primary text-white p-4 shadow-lg">
+    <h1 class="fw-bold">Regresión Logistica</h1>
+    <h2 class="fs-4">Calcular si un paquete se podrá transportar</h2>
+</header>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4 rounded-3" style="max-width: 500px; width: 100%;">
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Distancia (km)</label>
+                    <input type="number" name="distancia" class="form-control" required step="0.1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Peso del paquete (kg)</label>
+                    <input type="number" name="peso" class="form-control" required step="0.1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Clima</label>
+                    <select name="clima" class="form-select" required>
+                        <option value="soleado">Soleado</option>
+                        <option value="lluvioso">Lluvioso</option>
+                        <option value="nublado">Nublado</option>
+                        <option value="tormenta">Tormenta</option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tráfico</label>
+                    <select name="trafico" class="form-select" required>
+                        <option value="bajo">Bajo</option>
+                        <option value="medio">Medio</option>
+                        <option value="alto">Alto</option>
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Predecir</button>
+            </form>
+
+            {% if result is not none %}
+            <div class="alert alert-info text-center mt-4 fw-bold">
+                ¿Se puede transportar el paquete?:
+                <br>
+                <span class="fs-4">{{ 'Sí' if result == 1 else 'No' }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

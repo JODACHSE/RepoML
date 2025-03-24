@@ -4,9 +4,11 @@ Aplicación flask para Machine Learning (conceptos)
 from flask import Flask, render_template, request
 from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
+from python.S6 import logistic_regression
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+# pip install -r requirements.txt
 # Usar en terminal: flask --app app run --debug
 
 
@@ -101,12 +103,35 @@ def linear_regression_peso_altura():
                            graph=graph_image)
 
 
-@app.route("/linear_logistic_mind_map")
-def linear_logistic_mind_map():
+@app.route("/logistic_regression_mind_map")
+def logistic_regression_mind_map():
     """
     Página para mostrar mapa mental sobre Regresión logistica
     """
-    return render_template("html/S5/linear_logistic_mind_map.html")
+    return render_template("html/S5/logistic_regression_mind_map.html")
+
+
+@app.route("/logistic_regression_case", methods=["GET", "POST"])
+def logistic_regression_case():
+    """
+    Página para predecir si un paquete se podra transportar
+    """
+    predicted_result = None
+
+    if request.method == "POST":
+        try:
+            distancia = float(request.form.get("distancia"))
+            peso = float(request.form.get("peso"))
+            clima = request.form.get("clima")
+            trafico = request.form.get("trafico")
+
+            predicted_result = logistic_regression.predict_transport(
+                distancia, peso, clima, trafico)
+
+        except (ValueError, TypeError):
+            predicted_result = "Entrada no válida"
+
+    return render_template("html/S6/logistic_regression_case.html", result=predicted_result)
 
 
 if __name__ == "__main__":
