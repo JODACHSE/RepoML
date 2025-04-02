@@ -73,6 +73,20 @@ Se siguio el siguiente flujo de trabajo básico:
         git push origin main
         ```
 
+## Crear migraciones
+1. **Crear la revision**:
+    ```bash
+    flask db revision -m "Create <Name table> database"
+    ```
+2. **Ejecutar migración**:
+    ```bash
+    flask db upgrade
+    ```
+3. **Devolver migración**:
+    ```bash
+    flask db downgrade
+    ```
+
 > [!NOTE]
 > ### ¡Aprende más sobre Git con los siguientes recursos!
 > * [Documentación oficial de Git](https://git-scm.com/doc)
