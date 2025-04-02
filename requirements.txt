@@ -6,3 +6,5 @@ scikit-learn
 gunicorn
 Flask-MySQLdb
 python-dotenv
+Flask-Migrate
+flask-sqlalchemy
