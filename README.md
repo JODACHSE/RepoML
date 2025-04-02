@@ -38,25 +38,30 @@ Se siguio el siguiente flujo de trabajo básico:
     ```bash
     git clone https://github.com/JODACHSE/RepoML.git
     ```
-2. **Creamos y nos cambiamos a una nueva rama**:
+2. **Instalamos dependencias**:
+    Si no esta creado se crea un archivo con las librerías necesarias
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. **Creamos y nos cambiamos a una nueva rama**:
     ```bash
     git checkout -b nombre-de-tu-rama
     ```
-3. **Realizamos cambios**: Crear nuevas carpetas, nuevos archivos, hacer modificaciones a otros ya existentes y experimentar con el código.
-4. **Verificamos cambios**:
+4. **Realizamos cambios**: Crear nuevas carpetas, nuevos archivos, hacer modificaciones a otros ya existentes y experimentar con el código.
+5. **Verificamos cambios**:
     ```bash
     git status
     ```
-5. **Hicimos commit de los cambios**:
+6. **Hicimos commit de los cambios**:
     ```bash
     git add .
     git commit -m "Descripción clara de los cambios realizados"
     ```
-6. **Subimos los cambios a GitHub**:
+7. **Subimos los cambios a GitHub**:
     ```bash
     git push origin nombre-de-tu-rama
     ```
-7. **Fusionamos con la rama principal (main)**:
+8. **Fusionamos con la rama principal (main)**:
     * En GitHub:
         1. Creamos un **Pull Request** desde nuestra rama hacia el `main`.
         2. Revisamos los cambios y resolvemos conflictos si existen.

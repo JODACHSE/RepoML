@@ -1,16 +1,15 @@
 """
 Aplicación flask para Machine Learning (conceptos)
 """
-from flask import Flask, render_template, request
+from flask import jsonify, render_template, request
 from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
 from python.S6 import logistic_regression
+from python.db_connection import mySql, app
 
-app = Flask(__name__)
 app.config["DEBUG"] = True
 # pip install -r requirements.txt
 # Usar en terminal: flask --app app run --debug
-
 
 @app.route("/")
 def index():
@@ -133,6 +132,13 @@ def logistic_regression_case():
 
     return render_template("html/S6/logistic_regression_case.html", result=predicted_result)
 
+@app.route("/conexion_mysql")
+def conexion_mysql_prueba():
+    cursor = mySql.connection.cursor()
+    cursor.execute("SELECT DATABASE()")
+    db_name = cursor.fetchone()
+    cursor.close()
+    return jsonify({"database": db_name})
 
 if __name__ == "__main__":
     app.run(debug=True)
