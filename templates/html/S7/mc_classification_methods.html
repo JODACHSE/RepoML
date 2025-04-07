@@ -1,0 +1,33 @@
+{% extends "html/templates/base.html" %}
+
+{% block title %}Características de Imágenes{% endblock %}
+
+{% block head_adds %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Características de las Imágenes</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID Imagen</th>
+            <th>Enlace de la Imagen</th>
+            <th>Modelo</th>
+            <th>Característica</th>
+            <th>Referencia</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row['id_Imagen'] }}</td>
+            <td><a href="{{ row['link_Imagen'] }}" target="_blank">Ver Imagen</a></td>
+            <td>{{ row['modelo'] }}</td>
+            <td>{{ row['caracteristica'] }}</td>
+            <td>{{ row['referencia'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

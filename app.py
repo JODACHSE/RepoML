@@ -1,11 +1,12 @@
 """
 Aplicación flask para Machine Learning (conceptos)
 """
-from flask import jsonify, render_template, request
+from flask import render_template, request
+from python.db_connection import app
 from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
 from python.S6 import logistic_regression
-from python.db_connection import mySql, app
+from python.S7.mc_classification_methods import get_models_data
 
 app.config["DEBUG"] = True
 # pip install -r requirements.txt
@@ -132,13 +133,10 @@ def logistic_regression_case():
 
     return render_template("html/S6/logistic_regression_case.html", result=predicted_result)
 
-@app.route("/conexion_mysql")
-def conexion_mysql_prueba():
-    cursor = mySql.connection.cursor()
-    cursor.execute("SELECT DATABASE()")
-    db_name = cursor.fetchone()
-    cursor.close()
-    return jsonify({"database": db_name})
+@app.route("/mc_classification_methods")
+def mc_classification_methods():
+    models_data = get_models_data()
+    return render_template("html/S7/mc_classification_methods.html", data=models_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
