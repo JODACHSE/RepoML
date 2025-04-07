@@ -8,6 +8,7 @@ def get_models_data():
             i.link_Imagen,
             c.Descripcion AS caracteristica,
             c.Referencia AS referencia,
+            m.id_Modelo,
             m.Nombre_Modelo AS modelo
         FROM
             imagenes i
@@ -19,4 +20,16 @@ def get_models_data():
     cursor.execute(query)
     data = cursor.fetchall()
     cursor.close()
-    return data
+
+    # Agrupar datos por id_Modelo
+    grouped_data = {}
+    for row in data:
+        model_id = row['id_Modelo']
+        if model_id not in grouped_data:
+            grouped_data[model_id] = {
+                "nombre_modelo": row['modelo'],
+                "imagenes": []
+            }
+        grouped_data[model_id]["imagenes"].append(row)
+    
+    return grouped_data

@@ -3,31 +3,66 @@
 {% block title %}Características de Imágenes{% endblock %}
 
 {% block head_adds %}
-<link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 {% endblock %}
 
 {% block content %}
 <h1>Características de las Imágenes</h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID Imagen</th>
-            <th>Enlace de la Imagen</th>
-            <th>Modelo</th>
-            <th>Característica</th>
-            <th>Referencia</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in data %}
-        <tr>
-            <td>{{ row['id_Imagen'] }}</td>
-            <td><a href="{{ row['link_Imagen'] }}" target="_blank">Ver Imagen</a></td>
-            <td>{{ row['modelo'] }}</td>
-            <td>{{ row['caracteristica'] }}</td>
-            <td>{{ row['referencia'] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+
+<!-- Pestañas -->
+<ul class="nav nav-tabs" id="modelTabs" role="tablist">
+    {% set is_first = True %}
+    {% for model_id, model_data in data.items() %}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link"
+                id="tab-{{ model_id }}"
+                data-bs-toggle="tab"
+                data-bs-target="#content-{{ model_id }}"
+                type="button"
+                role="tab"
+                aria-controls="content-{{ model_id }}"
+                aria-selected="{{ 'true' if is_first else 'false' }}"
+            >
+                {{ model_data.nombre_modelo }}
+            </button>
+        </li>
+        {% set is_first = False %}
+    {% endfor %}
+</ul>
+
+<!-- Contenido de las pestañas -->
+<div class="tab-content" id="modelTabsContent">
+    {% for model_id, model_data in data.items() %}
+    <div class="tab-pane fade"
+         id="content-{{ model_id }}"
+         role="tabpanel"
+         aria-labelledby="tab-{{ model_id }}">
+        <h2>{{ model_data.nombre_modelo }}</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Enlace de la Imagen</th>
+                    <th>Característica</th>
+                    <th>Referencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in model_data.imagenes %}
+                <tr>
+                    <td>
+                        <img
+                            src="{{ url_for('static', filename=item['link_Imagen']) }}"
+                            alt="{{ item['model_id'] }} - item['link_Imagen']"
+                            style="width: 300px; height: auto;"
+                        >
+                    </td>
+                    <td>{{ item['caracteristica'] }}</td>
+                    <td>{{ item['referencia'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
