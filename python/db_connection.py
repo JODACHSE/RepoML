@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 mySql = MySQL()
-app = Flask(__name__)
+app = Flask('app')
 
 load_dotenv()
 app.config["MYSQL_USER"] = os.getenv("MYSQL_USER")
