@@ -12,6 +12,7 @@ app.config["DEBUG"] = True
 # pip install -r requirements.txt
 # Usar en terminal: flask --app app run --debug
 
+
 @app.route("/")
 def index():
     """retornamos la pagina web"""
@@ -114,9 +115,10 @@ def logistic_regression_mind_map():
 @app.route("/logistic_regression_case", methods=["GET", "POST"])
 def logistic_regression_case():
     """
-    Página para predecir si un paquete se podra transportar
+    Página para predecir si un paquete se podrá transportar y mostrar métricas de evaluación.
     """
     predicted_result = None
+    metrics = None
 
     if request.method == "POST":
         try:
@@ -125,18 +127,24 @@ def logistic_regression_case():
             clima = request.form.get("clima")
             trafico = request.form.get("trafico")
 
-            predicted_result = logistic_regression.predict_transport(
+            # Ahora la función retorna una tupla (predicción, métricas)
+            predicted_result, metrics = logistic_regression.predict_transport(
                 distancia, peso, clima, trafico)
 
         except (ValueError, TypeError):
             predicted_result = "Entrada no válida"
 
-    return render_template("html/S6/logistic_regression_case.html", result=predicted_result)
+    return render_template("html/S6/logistic_regression_case.html",
+                           result=predicted_result,
+                           metrics=metrics)
+
 
 @app.route("/mc_classification_methods")
 def mc_classification_methods():
+
     models_data = get_models_data()
     return render_template("html/S7/mc_classification_methods.html", data=models_data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

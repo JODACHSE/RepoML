@@ -1,7 +1,8 @@
+"""Conexion con la base de datos MySQL usando Flask y SQLAlchemy"""
+import os
 from flask import Flask
 from flask_mysqldb import MySQL
 from dotenv import load_dotenv
-import os
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
