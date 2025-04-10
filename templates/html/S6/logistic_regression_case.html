@@ -1,6 +1,6 @@
 {% extends "html/templates/base.html" %}
 
-{% block title %}Regresión Logistica: Transporte de paquetes{% endblock %}
+{% block title %}Regresión Logística: Transporte de paquetes{% endblock %}
 
 {% block head_adds %}
 <link rel="shortcut icon" href="{{ url_for('static', filename='/machine-learning-favicon.ico') }}">
@@ -9,7 +9,7 @@
 {% block content %}
 
 <header class="text-center bg-primary text-white p-4 shadow-lg">
-    <h1 class="fw-bold">Regresión Logistica</h1>
+    <h1 class="fw-bold">Regresión Logística</h1>
     <h2 class="fs-4">Calcular si un paquete se podrá transportar</h2>
 </header>
 
@@ -32,7 +32,6 @@
                         <option value="lluvioso">Lluvioso</option>
                         <option value="nublado">Nublado</option>
                         <option value="tormenta">Tormenta</option>
-
                     </select>
                 </div>
                 <div class="mb-3">
@@ -41,7 +40,6 @@
                         <option value="bajo">Bajo</option>
                         <option value="medio">Medio</option>
                         <option value="alto">Alto</option>
-
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Predecir</button>
@@ -52,6 +50,29 @@
                 ¿Se puede transportar el paquete?:
                 <br>
                 <span class="fs-4">{{ 'Sí' if result == 1 else 'No' }}</span>
+            </div>
+            {% endif %}
+
+            {% if metrics %}
+            <div class="mt-4">
+                <h4>Métricas del Modelo</h4>
+                <p><strong>Accuracy:</strong> {{ metrics.accuracy }}</p>
+                <p><strong>Precision:</strong> {{ metrics.precision }}</p>
+                <p><strong>Recall:</strong> {{ metrics.recall }}</p>
+                <h5>Matriz de Confusión Numérica:</h5>
+                <table class="table table-bordered">
+                    <tbody>
+                        {% for row in metrics.conf_matrix %}
+                        <tr>
+                            {% for cell in row %}
+                            <td class="text-center">{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <h5>Gráfica de la Matriz de Confusión:</h5>
+                <img src="data:image/png;base64,{{ metrics.cm_image }}" alt="Matriz de Confusión" class="img-fluid">
             </div>
             {% endif %}
         </div>
