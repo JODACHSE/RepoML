@@ -7,6 +7,7 @@ from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
 from python.S6 import logistic_regression
 from python.S7.mc_classification_methods import get_models_data
+from python.S8.mc_transport_package_upload import get_predict_data_from_file
 
 app.config["DEBUG"] = True
 # pip install -r requirements.txt
@@ -144,6 +145,29 @@ def mc_classification_methods():
 
     models_data = get_models_data()
     return render_template("html/S7/mc_classification_methods.html", data=models_data)
+
+@app.route("/mc_transport_package_upload", methods=["GET", "POST"])
+def mc_transport_package_upload():
+    output_file = None
+    error_message = None
+
+    try:
+        if request.method == "POST":
+            file = request.files['file']
+            if str(file.filename).endswith(".csv") or str(file.filename).endswith(".xlsx"):
+                file_path = f"./static/files/upload/{file.filename}"
+                file.save(file_path)
+                output_file = get_predict_data_from_file(file.filename)
+            else:
+                raise ValueError("Solo se permiten archivos .csv o .xlsx")
+    except Exception as e:
+        error_message = str(e)
+
+    return render_template(
+        "html/S8/mc_transport_package_upload.html",
+        output_file=output_file,
+        error_message=error_message
+    )
 
 
 if __name__ == "__main__":

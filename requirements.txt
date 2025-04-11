@@ -8,3 +8,4 @@ Flask-MySQLdb
 python-dotenv
 Flask-Migrate
 flask-sqlalchemy
+openpyxl
