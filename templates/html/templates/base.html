@@ -45,11 +45,19 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              <button class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Actividades por semana
-              </a>
+              </button>
               <ul class="dropdown-menu dropdown-menu-dark px-3" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <hr class="dropdown-divider">Semana 8 - Modelos regresión supervisado
+                </li>
+                <li>
+                  <a class="nav-link" href="{{ url_for('mc_transport_package_upload') }}">
+                    Carga de Excel
+                  </a>
+                </li>
                 <li>
                   <hr class="dropdown-divider">Semana 7 - Modelos regresión
                 </li>
