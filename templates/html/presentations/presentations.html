@@ -1,0 +1,45 @@
+{% extends "html/templates/base.html" %}
+
+{% block title %}Presentaciones{% endblock %}
+
+{% block head_adds %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+<ul class="nav nav-tabs" id="modelTabs" >
+    {% for presentation_data in presentations_data %}
+        <li class="nav-item">
+            <button class="nav-link"
+                id="tab-{{ loop.index }}"
+                data-bs-toggle="tab"
+                data-bs-target="#content-{{ loop.index }}"
+                type="button"
+                role="tab"
+                aria-controls="content-{{ loop.index }}"
+                aria-selected="false"
+            >
+                {{ presentation_data.week_name }}
+            </button>
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="tab-content" id="modelTabsContent">
+    {% for presentation_data in presentations_data %}
+        <div class="tab-pane fade"
+            id="content-{{ loop.index }}"
+            role="tabpanel"
+            aria-labelledby="tab-{{ loop.index }}">
+            <h2>{{ presentation_data.week_name }}</h2>
+            <iframe
+                src="{{ presentation_data.link }}"
+                width="640"
+                height="360"
+                allowfullscreen
+                title="{{ presentation_data.title }}">
+            </iframe>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

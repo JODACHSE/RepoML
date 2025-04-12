@@ -8,6 +8,7 @@ from python.S4 import linear_regression_weight_and_height
 from python.S6 import logistic_regression
 from python.S7.mc_classification_methods import get_models_data
 from python.S8.mc_transport_package_upload import get_predict_data_from_file
+from python.presentations.presentations import get_presentations_data
 
 app.config["DEBUG"] = True
 # pip install -r requirements.txt
@@ -169,6 +170,10 @@ def mc_transport_package_upload():
         error_message=error_message
     )
 
+@app.route("/presentations")
+def presentations():
+    presentations_data = get_presentations_data()
+    return render_template("html/presentations/presentations.html", presentations_data=presentations_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
