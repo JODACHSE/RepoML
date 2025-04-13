@@ -7,7 +7,7 @@ from python.S4 import linear_regression
 from python.S4 import linear_regression_weight_and_height
 from python.S6 import logistic_regression
 from python.S7.mc_classification_methods import get_models_data
-from python.S8.mc_transport_package_upload import get_predict_data_from_file
+from python.S8.rnc_zone_risk_data import get_predict_data_from_file, get_template_file_path
 from python.presentations.presentations import get_presentations_data
 
 app.config["DEBUG"] = True
@@ -147,8 +147,8 @@ def mc_classification_methods():
     models_data = get_models_data()
     return render_template("html/S7/mc_classification_methods.html", data=models_data)
 
-@app.route("/mc_transport_package_upload", methods=["GET", "POST"])
-def mc_transport_package_upload():
+@app.route("/rnc_zone_risk_data", methods=["GET", "POST"])
+def rnc_zone_risk_data():
     output_file = None
     error_message = None
 
@@ -165,9 +165,10 @@ def mc_transport_package_upload():
         error_message = str(e)
 
     return render_template(
-        "html/S8/mc_transport_package_upload.html",
-        output_file=output_file,
-        error_message=error_message
+        "html/S8/rnc_zone_risk_data.html",
+        output_file = output_file,
+        error_message = error_message,
+        template_file_path = get_template_file_path(),
     )
 
 @app.route("/presentations")
