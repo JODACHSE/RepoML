@@ -76,7 +76,7 @@ Se siguio el siguiente flujo de trabajo básico:
 ## Crear migraciones
 1. **Crear la revision**:
     ```bash
-    flask db revision -m "Create <Name table> database"
+    flask db revision -m "Create <Name table> table"
     ```
 2. **Ejecutar migración**:
     ```bash
