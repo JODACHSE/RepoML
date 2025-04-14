@@ -148,16 +148,18 @@ def mc_classification_methods():
 
 @app.route("/rnc_zone_risk_data", methods=["GET", "POST"])
 def rnc_zone_risk_data():
-    output_file = None
     error_message = None
-
+    predict_data = {
+        "zone_risk_data": None,
+        "path_file": None,
+    }
     try:
         if request.method == "POST":
             file = request.files['file']
             if str(file.filename).endswith(".csv") or str(file.filename).endswith(".xlsx"):
                 file_path = f"./static/files/upload/{file.filename}"
                 file.save(file_path)
-                output_file = get_predict_data_from_file(file.filename)
+                predict_data = get_predict_data_from_file(file.filename)
             else:
                 raise ValueError("Solo se permiten archivos .csv o .xlsx")
     except Exception as e:
@@ -165,7 +167,7 @@ def rnc_zone_risk_data():
 
     return render_template(
         "html/S8/rnc_zone_risk_data.html",
-        output_file = output_file,
+        predict_data = predict_data,
         error_message = error_message,
         template_file_path = get_template_file_path(),
     )
