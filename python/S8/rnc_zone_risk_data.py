@@ -26,28 +26,28 @@ columns_renamed = {
 
 def get_data_from_file(filename: str):
     if filename.endswith(".csv"):
-        transport_package_data = pd.read_csv(
+        zone_risk_data_in_file = pd.read_csv(
             f"./static/files/upload/{filename}",
             sep=";",
         )
     else:
-        transport_package_data = pd.read_excel(
+        zone_risk_data_in_file = pd.read_excel(
             f"./static/files/upload/{filename}",
         )
 
-    return transport_package_data
+    return zone_risk_data_in_file
 
-def get_path_file(filename: str, transport_package_data: pd.DataFrame):
+def get_path_file(filename: str, zone_risk_data_in_file: pd.DataFrame):
     path_file = (f"./static/files/downloads/Resultado_{filename}").replace(" ", "_")
 
     if filename.endswith(".csv"):
-        transport_package_data.to_csv(
+        zone_risk_data_in_file.to_csv(
             path_file,
             index=False,
             sep=";",
         )
     else:
-        transport_package_data.to_excel(
+        zone_risk_data_in_file.to_excel(
             path_file,
             index=False,
         )
