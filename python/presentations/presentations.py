@@ -15,6 +15,11 @@ def get_presentations_data():
             "title": "Semana 7.mp4",
             "link": "https://mailunicundiedu-my.sharepoint.com/personal/jdchavarro_ucundinamarca_edu_co/_layouts/15/embed.aspx?UniqueId=07c358fe-d09e-4ffa-8789-7e9c32d7c80c&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
         },
+        {
+            "week_name": "Semana 8",
+            "title": "KNN sismos - Hecho con Clipchamp.mp4",
+            "link": "https://mailunicundiedu-my.sharepoint.com/personal/nabohorquez_ucundinamarca_edu_co/_layouts/15/embed.aspx?UniqueId=9653e2c7-6e30-4912-bdb2-d0a0704208ef&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
+        },
     ]
 
     return presentations_data
