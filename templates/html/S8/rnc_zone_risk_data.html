@@ -14,13 +14,6 @@
         </div>
     {% endif %}
 
-    {% if output_file %}
-        <div class="alert alert-success text-center mt-4 fw-bold">
-            Archivo procesado con éxito. <br>
-            <a href="{{ url_for('static', filename=output_file.split('static/')[-1]) }}" class="btn btn-primary mt-2" download>Descargar Resultados</a>
-        </div>
-    {% endif %}
-
     <div class="container mt-5 d-flex justify-content-center">
         <div class="card shadow-lg p-4 rounded-3">
             <form method="post" class="card-body" enctype="multipart/form-data">
@@ -39,4 +32,41 @@
             </a>
         </div>
     </div>
+
+    {% if predict_data['zone_risk_data'] %}
+
+        {% if predict_data['path_file'] %}
+            <div class="alert alert-success text-center mt-4 fw-bold">
+                Archivo procesado con éxito. <br>
+                <a
+                    href="{{ url_for('static', filename=predict_data['path_file'].split('static/')[-1]) }}"
+                    class="btn btn-primary mt-2"
+                    download
+                >
+                    Descargar Resultados
+                </a>
+            </div>
+        {% endif %}
+
+        <table class="table table-striped table-bordered mt-5">
+            <thead>
+                <tr class="table-primary">
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Profundidad del sismo</th>
+                    <th>Nivel del riesgo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in predict_data['zone_risk_data'] %}
+                    <tr>
+                        <td>{{ item.latitude }}</td>
+                        <td>{{ item.longitude }}</td>
+                        <td>{{ item.depth_earthquake }}</td>
+                        <td>{{ item.risk_level }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

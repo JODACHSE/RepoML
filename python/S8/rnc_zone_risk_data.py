@@ -97,6 +97,7 @@ def get_predict_data_from_file(filename: str):
     zone_risk_data['longitude'] = zone_risk_data['longitude'].astype(str).str.replace('.', ',')
 
     columns_name = { item: keys for keys, item in columns_renamed.items() }
+    zone_risk_data_original = zone_risk_data.to_dict(orient="records")
     zone_risk_data.rename(
         columns = {
             **columns_name,
@@ -105,7 +106,10 @@ def get_predict_data_from_file(filename: str):
         inplace = True,
     )
 
-    return get_path_file(filename, zone_risk_data)
+    return {
+        "zone_risk_data": zone_risk_data_original,
+        "path_file": get_path_file(filename, zone_risk_data)
+    }
 
 def get_template_file_path():
     template = pd.DataFrame({
